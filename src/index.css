@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/medievalsharp');
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +8,76 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image:
+  linear-gradient(270deg,
+    rgba(41, 43, 76, 0.289),
+    rgba(7, 38, 66, 0.529)), url(
+'./images/bckg.jpg');
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.home{
+  width: 100% !important;
+  padding: 7vw 0 7vw 0;
+  margin-top: 7vw;
+}
+
+
+h2, .start {
+  max-width: 40ch;
+  transform: scale(0.94);
+  animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+
+span, .start {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(4px);
+  margin-left: 1.5vw;
+}
+
+span:nth-child(1) {
+  animation: fade-in 3s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(2) {
+  animation: fade-in 3s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(3), .start {
+  animation: fade-in 3s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+span:nth-child(4) {
+  animation: fade-in 3s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+
+.home-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.start{
+  background-color: #2F5C71 !important;
+  font-size: 1.2vw !important;
+  font-weight: 500 !important;
+  font-family: 'medievalsharp' !important ;
 }
