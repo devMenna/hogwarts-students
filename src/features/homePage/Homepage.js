@@ -1,7 +1,6 @@
 import { Container, Typography, Button, Modal } from '@mui/material'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import React from 'react'
-import "@fontsource/medievalsharp";
 import { Box } from '@mui/system';
 
 const Homepage = () => {
