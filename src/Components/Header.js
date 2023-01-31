@@ -1,18 +1,42 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import HomeIcon from '@mui/icons-material/Home';
 import { Box } from '@mui/system'
 import React from 'react'
+import { AutoFixHigh, Face, Home, Science  } from '@mui/icons-material';
 
 const Header = () => {
   return (
-    <Box className = 'appBar' style={{backgroundColor: '#2E5B70'}}>
-      <List>
+    <Box className = 'appBar' style={{bgColor: 'background.paper'}}>
+      <List style={{display: 'flex', flexDirection: 'row', width: '40%'}}>
       <ListItem>
             <ListItemButton>
-              <ListItemIcon>
-                <HomeIcon />
+              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}} >
+                <Home style={{width: '90%'}} />
               </ListItemIcon>
               <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+      <ListItem>
+            <ListItemButton>
+              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}}>
+                <Science style={{width: '90%'}} />
+              </ListItemIcon>
+              <ListItemText primary="Potions" />
+            </ListItemButton>
+          </ListItem>
+      <ListItem>
+            <ListItemButton>
+              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}}>
+                <AutoFixHigh style={{width: '90%'}} />
+              </ListItemIcon>
+              <ListItemText primary="Spells" />
+            </ListItemButton>
+          </ListItem>
+      <ListItem>
+            <ListItemButton>
+              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}}>
+                <Face style={{width: '90%'}} />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
             </ListItemButton>
           </ListItem>
       </List>
