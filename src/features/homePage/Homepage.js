@@ -49,8 +49,8 @@ const Homepage = () => {
         <p id="parent-modal-description" style={{fontWeight: 500}}>
         You must've received your letter recently, congratulations!<br /><br></br> We're here to help you stay organized at Hogwarts. You can search for potions [ in case like us you're scared of professor Snape] , learn new spells, and more! how about you tell us a little about yourself?
     </p>
-    <Button variant='contained' className='btn' style={{marginRight: 7}} >Character creation</Button>
-    <Button variant='contained' className='btn' >I just wanna browse</Button>
+    <Button variant='contained' className='btn' href={'/character-creation'}  style={{marginRight: 7}} >Character creation</Button>
+    <Button variant='contained' className='btn' >I'm here to browse</Button>
     <p style={{fontSize: '1.2vw', fontWeight: 100, marginTop: '1vw'}}>Have you not been sorted yet? What are you waiting for go <a href='https://www.wizardingworld.com' style={{textDecoration: 'none', color: '#FDD023'}}>Get sorted ..</a></p>
   </Box>
 
