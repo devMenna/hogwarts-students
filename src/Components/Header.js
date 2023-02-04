@@ -1,13 +1,14 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import { AutoFixHigh, Face, Home, Science  } from '@mui/icons-material';
+import { AutoFixHigh, Face, Home, Image, Science  } from '@mui/icons-material';
 
 const Header = () => {
   return (
     <Box className = 'appBar' style={{bgColor: 'background.paper'}}>
+      <Box>
       <List style={{display: 'flex', flexDirection: 'row', width: '40%'}}>
-      <ListItem>
+      <ListItem >
             <ListItemButton>
               <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}} >
                 <Home style={{width: '90%'}} />
@@ -40,6 +41,11 @@ const Header = () => {
             </ListItemButton>
           </ListItem>
       </List>
+      </Box>
+      <Box>
+      <Image style={{margin: '1vw', width: '2vw'}} />
+      </Box>
+
     </Box>
   )
 }
