@@ -146,6 +146,19 @@ code {
   }
 }
 
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 4px #0E121B;
+  background-color: #0E121B;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #557789a6;
+}
+
 
 .inner-content{
   display: flex !important;
@@ -154,4 +167,8 @@ code {
 
 .avatar{
   margin-left: 6vw !important;
+}
+
+.selected-house{
+  background-color: #557789a6;
 }
