@@ -1,4 +1,4 @@
-import React, {  useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Header from '../../Components/Header'
 import { Box, Button, ImageList, ImageListItem, List, ListItem, MenuItem, Select, TextField, Typography,  } from '@mui/material'
 import { Container } from '@mui/system';
@@ -6,6 +6,9 @@ import { nanoid } from '@reduxjs/toolkit';
 import { adventurer } from '@dicebear/collection';
 import { createAvatar } from '@dicebear/core';
 import { Replay } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { createdUser } from './characterSlice';
+import { redirect } from 'react-router-dom';
 
 const houses = [{id: nanoid() , 'house': 'Gryffindor', 
 'imageSource': 'https://i.pinimg.com/564x/05/fe/a7/05fea7e886d20a43dca6ba9b3bb335ce.jpg',},
@@ -23,6 +26,8 @@ const CharacterCreation = () => {
   const [isSelected, setIsSelected] = useState(null)
   const [random, setRandom] = useState(0)
 
+  const dispatch = useDispatch()
+
   const avatar = useMemo(() => {
     return createAvatar(adventurer, {
       size: 260,
@@ -36,6 +41,24 @@ const CharacterCreation = () => {
       backgroundColor: ["2D5B71","0C1F31"]
     }).toDataUriSync();
   }, [random]);
+
+  
+
+  const submitHandle = () => {
+
+
+    const formattedInput = [{
+     userName: name,
+     userYear : year,
+     userHouse : houses.find(house => house.id === isSelected).house,
+     userAvatar : avatar
+    }]
+
+    redirect("/dashboard")
+    dispatch(createdUser(formattedInput))
+
+  }
+
 
 
   
@@ -52,6 +75,7 @@ const CharacterCreation = () => {
   setName(e.target.value)
 
 }
+
 
   const boxStyle = {
     backgroundColor:'#557789a6',
@@ -204,7 +228,7 @@ const CharacterCreation = () => {
 
 
     </Container>
-    {name && year && isSelected && <Button style={{...buttonStyle, marginTop: '2vw' , marginBottom: '3vw'}}>Submit</Button>}
+    {name && year && isSelected && <Button onClick={submitHandle} style={{...buttonStyle, marginTop: '2vw' , marginBottom: '3vw'}}>Submit</Button>}
 
     </Box>
   )
