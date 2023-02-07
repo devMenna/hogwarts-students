@@ -1,9 +1,14 @@
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import { AutoFixHigh, Face, Home, Image, Science  } from '@mui/icons-material';
+import { AutoFixHigh, Face, Home, Science  } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+  const userAvatar = useSelector((state) => state.user.mainUser?.userAvatar)
+
+
   return (
     <Box className = 'appBar' style={{bgColor: 'background.paper'}}>
       <Box>
@@ -43,7 +48,7 @@ const Header = () => {
       </List>
       </Box>
       <Box>
-      <Image style={{margin: '1vw', width: '2vw'}} />
+      {userAvatar && <img src={userAvatar? userAvatar : ''} style={{margin: '1vw', width: '2vw'}} />}
       </Box>
 
     </Box>

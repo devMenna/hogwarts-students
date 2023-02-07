@@ -1,20 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
+const initialState = {
 
-]
+}
 
 const characterSlice = createSlice({
     name: 'user',
     initialState,
     reducers:{
         createdUser(state,action){
-            state.push(...action.payload)
+            state['mainUser'] = (action.payload)
         }
     }
 })
-
-export const { selectUserData } = (state) => state.user
 
 export const { createdUser } = characterSlice.actions
 

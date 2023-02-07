@@ -8,7 +8,7 @@ import { createAvatar } from '@dicebear/core';
 import { Replay } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { createdUser } from './characterSlice';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const houses = [{id: nanoid() , 'house': 'Gryffindor', 
 'imageSource': 'https://i.pinimg.com/564x/05/fe/a7/05fea7e886d20a43dca6ba9b3bb335ce.jpg',},
@@ -27,6 +27,9 @@ const CharacterCreation = () => {
   const [random, setRandom] = useState(0)
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+
 
   const avatar = useMemo(() => {
     return createAvatar(adventurer, {
@@ -47,15 +50,17 @@ const CharacterCreation = () => {
   const submitHandle = () => {
 
 
-    const formattedInput = [{
+    const formattedInput = {
      userName: name,
      userYear : year,
      userHouse : houses.find(house => house.id === isSelected).house,
      userAvatar : avatar
-    }]
+    }
 
-    redirect("/dashboard")
-    dispatch(createdUser(formattedInput))
+      dispatch(createdUser(formattedInput))
+    
+      navigate('/dashboard')
+
 
   }
 
@@ -122,6 +127,7 @@ const CharacterCreation = () => {
           }}>
 
 <div  style={{display: 'flex', alignItems:'center', marginBottom: '6vw'}}>
+
     <img src={avatar} className='avatar' alt="Avatar" id='avatar' style={{borderRadius: '10%', marginLeft: '9vw'}} />
 
     <Button onClick={() => setRandom(Math.random())} style={buttonStyle}> Generate 
@@ -228,7 +234,7 @@ const CharacterCreation = () => {
 
 
     </Container>
-    {name && year && isSelected && <Button onClick={submitHandle} style={{...buttonStyle, marginTop: '2vw' , marginBottom: '3vw'}}>Submit</Button>}
+    {name && year && isSelected && <Button onClick={submitHandle} className='submit' style={{...buttonStyle, marginTop: '2vw' , marginBottom: '3vw'}}>Submit</Button>}
 
     </Box>
   )

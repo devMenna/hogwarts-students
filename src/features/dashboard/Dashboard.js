@@ -1,11 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectUserData } from '../character-creation/characterSlice'
 import Header from '../../Components/Header'
 
 const Dashboard = () => {
 
-    const userData = useSelector(selectUserData)
+    const userData = useSelector((state) => state.user.mainUser)
     console.log(userData)
 
   return (
