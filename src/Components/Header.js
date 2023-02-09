@@ -48,7 +48,7 @@ const Header = () => {
       </List>
       </Box>
       <Box>
-      {userAvatar && <img src={userAvatar? userAvatar : ''} style={{margin: '1vw', width: '2vw'}} />}
+      {userAvatar && <img src={userAvatar? userAvatar : ''} style={{margin: '1vw', width: '3vw',}} />}
       </Box>
 
     </Box>

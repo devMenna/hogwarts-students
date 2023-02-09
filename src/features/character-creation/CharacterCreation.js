@@ -33,15 +33,13 @@ const CharacterCreation = () => {
 
   const avatar = useMemo(() => {
     return createAvatar(adventurer, {
-      size: 260,
+      size: 270,
       seed: random,
       features: ["birthmark","blush","freckles"],
       featuresProbability: 100,
       glasses: ["variant01","variant02","variant03",'variant04','variant05'],
       glassesProbability: 50,
       skinColor: ["ecad80","f2d3b1"],
-      backgroundType: ["gradientLinear"],
-      backgroundColor: ["2D5B71","0C1F31"]
     }).toDataUriSync();
   }, [random]);
 

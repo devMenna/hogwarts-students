@@ -167,6 +167,7 @@ body::-webkit-scrollbar-thumb {
 
 .avatar{
   margin-left: 6vw !important;
+  background-image: linear-gradient(to bottom , #0C1F31, #2D5B71)
 }
 
 .selected-house{
