@@ -29,7 +29,7 @@ const Homepage = () => {
 
         <Container className='home-content' style={{display: 'flex', alignItems:'center', justifyContent: 'center'}}>
           {!open &&
-            <Typography style={{fontFamily: 'medievalsharp', fontWeight: 700, fontSize: '4vw'}}>
+            <Typography style={{fontFamily: 'medievalsharp', fontWeight: 700, fontSize: '3.5vw'}}>
                 <h2 className='span-container'>
                 <span className='span-title'>Welcome</span>
                 <span className='span-title'>To</span>

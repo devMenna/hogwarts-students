@@ -22,7 +22,7 @@ const houses = [{id: nanoid() , 'house': 'Gryffindor',
 const CharacterCreation = () => {
 
   const [name, setName] = useState('')
-  const [year, setYear] = useState(1);
+  const [year, setYear] = useState('');
   const [isSelected, setIsSelected] = useState(null)
   const [random, setRandom] = useState(0)
 
@@ -173,13 +173,13 @@ const CharacterCreation = () => {
                   label="Year"
                   style={boxStyle}
                 >
-                <MenuItem value={1} default>1st</MenuItem>
-                <MenuItem value={2}>2nd</MenuItem>
-                <MenuItem value={3}>3rd</MenuItem>
-                <MenuItem value={4}>4th</MenuItem>
-                <MenuItem value={5}>5th</MenuItem>
-                <MenuItem value={6}>6th</MenuItem>
-                <MenuItem value={7}>7th</MenuItem>
+                <MenuItem value={'1st'} default>1st</MenuItem>
+                <MenuItem value={'2nd'}>2nd</MenuItem>
+                <MenuItem value={'3rd'}>3rd</MenuItem>
+                <MenuItem value={'4th'}>4th</MenuItem>
+                <MenuItem value={'5th'}>5th</MenuItem>
+                <MenuItem value={'6th'}>6th</MenuItem>
+                <MenuItem value={'7th'}>7th</MenuItem>
         </Select>
 
       </ListItem>

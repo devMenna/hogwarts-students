@@ -6,7 +6,12 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-  const userAvatar = useSelector((state) => state.user.mainUser?.userAvatar)
+  const userData = useSelector((state) => state.user.mainUser)
+
+  const logoStyle ={
+    color: '#FCCF23',
+     fontSize: 'medium'
+  }
 
 
   return (
@@ -15,7 +20,7 @@ const Header = () => {
       <List style={{display: 'flex', flexDirection: 'row', width: '40%'}}>
       <ListItem >
             <ListItemButton>
-              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}} >
+              <ListItemIcon style={logoStyle} >
                 <Home style={{width: '90%'}} />
               </ListItemIcon>
               <ListItemText primary="Home" />
@@ -23,7 +28,7 @@ const Header = () => {
           </ListItem>
       <ListItem>
             <ListItemButton>
-              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}}>
+              <ListItemIcon style={logoStyle}>
                 <Science style={{width: '90%'}} />
               </ListItemIcon>
               <ListItemText primary="Potions" />
@@ -31,7 +36,7 @@ const Header = () => {
           </ListItem>
       <ListItem>
             <ListItemButton>
-              <ListItemIcon style={{color: '#FCCF23', fontSize: 'medium'}}>
+              <ListItemIcon style={logoStyle}>
                 <AutoFixHigh style={{width: '90%'}} />
               </ListItemIcon>
               <ListItemText primary="Spells" />
@@ -47,8 +52,9 @@ const Header = () => {
           </ListItem>
       </List>
       </Box>
-      <Box>
-      {userAvatar && <img src={userAvatar? userAvatar : ''} style={{margin: '1vw', width: '3vw',}} />}
+      <Box style={{display: 'flex', flexDirection: 'row-reverse'}}>
+      {userData && <img alt='user-avatar' src={userData? userData.userAvatar : ''} style={{margin: '1vw', width: '3vw',}} />}
+      {userData && <p style={{margin: '2vw', width: '55%',}} >{userData? userData.userName : ''} </p>}
       </Box>
 
     </Box>
