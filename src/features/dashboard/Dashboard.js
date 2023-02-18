@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux'
 import Header from '../../Components/Header'
-import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, List, ListItem, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import {  useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Dashboard = () => {
-  
+
     const navigate = useNavigate()
 
     const userData = useSelector((state) => state.user.mainUser)
+    console.log(userData)
 
     useEffect(() => {
       if(!userData){
@@ -17,10 +19,9 @@ const Dashboard = () => {
 
     } , [userData, navigate])
 
-
     const cardStyle ={
       backgroundColor: 'transparent',
-      maxWidth: 300, margin:'4%', border:'0.2vw solid #FCCF23'
+      maxWidth: '18%', margin:'2%', border:'0.2vw solid #FCCF23'
     }
 
     const buttonStyle = {
@@ -35,8 +36,13 @@ const Dashboard = () => {
 
 
   return (
-    <Box className = 'dashboard-content'>
+    <Box >
         <Header />
+        <Box className = 'dashboard-content' style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    }}>
 
         <Card style={cardStyle}>
         <CardMedia
@@ -56,6 +62,11 @@ const Dashboard = () => {
         </CardContent>
         <Button style={buttonStyle} onClick={() => navigate('/character-creation')}>Edit</Button>
     </Card>
+    <Box className='dashboard-text'>
+    <p style={{color: '#FCCF23', marginRight: '3vw', marginTop: '2vw', width:'100%', fontSize: '3vw'}}>About {userData.userHouse}</p>
+    </Box>
+    <img src={userData.houseHeadPic} alt='test'></img>
+    </Box>
     </Box>
   )
 }

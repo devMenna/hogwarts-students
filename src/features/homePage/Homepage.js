@@ -1,13 +1,16 @@
 import { Container, Typography, Button, Modal } from '@mui/material'
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-import React from 'react'
+import React, { useState } from 'react'
 import { Box } from '@mui/system';
 
 const Homepage = () => {
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {setOpen(true)
+  aud.play()};
   const handleClose = () => setOpen(false);
+  const aud = document.getElementById('audio')
+
 
   const style = {
     position: 'absolute',

@@ -9,15 +9,17 @@ import { Replay } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { createdUser } from './characterSlice';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const houses = [{id: nanoid() , 'house': 'Gryffindor', 
-'imageSource': 'https://i.pinimg.com/564x/05/fe/a7/05fea7e886d20a43dca6ba9b3bb335ce.jpg',},
+'imageSource': 'https://i.pinimg.com/564x/05/fe/a7/05fea7e886d20a43dca6ba9b3bb335ce.jpg', houseHead : 'Albus Dumbledore'},
 {id: nanoid() , 'house': 'Slytherin', 
-'imageSource': 'https://i.pinimg.com/564x/34/ad/bf/34adbf92b50198013bc64775ed0a5616.jpg'},
+'imageSource': 'https://i.pinimg.com/564x/34/ad/bf/34adbf92b50198013bc64775ed0a5616.jpg', houseHead : 'Severus Snape'},
 {id: nanoid() , 'house': 'Ravenclaw', 
-'imageSource': 'https://i.pinimg.com/564x/7c/81/8c/7c818c14c74964610a3601bda3eba946.jpg'},
+'imageSource': 'https://i.pinimg.com/564x/7c/81/8c/7c818c14c74964610a3601bda3eba946.jpg', houseHead : 'Severus Snape'},
 {id: nanoid() ,'house': 'Hufflepuff', 
-'imageSource': 'https://i.pinimg.com/564x/76/45/b9/7645b9b88e14bc3d8c12954bb130fd76.jpg'}]
+'imageSource': 'https://i.pinimg.com/564x/76/45/b9/7645b9b88e14bc3d8c12954bb130fd76.jpg', houseHead : 'Filius Flitwick', headPic : 'https://static.wikia.nocookie.net/harrypotter/images/4/4b/Flitwickarmourbattle.png'}]
+
 
 const CharacterCreation = () => {
 
@@ -45,14 +47,31 @@ const CharacterCreation = () => {
 
   
 
-  const submitHandle = () => {
+  const submitHandle = async() => {
+
+    const allHouseData = (await axios.get('https://wizard-world-api.herokuapp.com/houses')).data
+  
+    const houseId = allHouseData.find(element => element.name === houses.find(house => house.id === isSelected).house ).id
+
+    const houseCall = (await axios.get('https://wizard-world-api.herokuapp.com/houses/' + houseId)).data
+    console.log(houseCall)
+
+    const currentHouse = houses.find(house => house.id === isSelected)
 
 
     const formattedInput = {
      userName: name,
      userYear : year,
-     userHouse : houses.find(house => house.id === isSelected).house,
-     userAvatar : avatar
+     userAvatar : avatar,
+     userHouse : currentHouse.house,
+     houseAnimal : houseCall.animal,
+     houseFounder : houseCall.founder,
+     houseElement : houseCall.element,
+     houseGhost : houseCall.ghost,
+     houseHead : currentHouse.houseHead,
+     houseHeadPic : currentHouse.headPic
+
+    //  ...houseCall.data
     }
 
       dispatch(createdUser(formattedInput))

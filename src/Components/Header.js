@@ -54,7 +54,7 @@ const Header = () => {
       </Box>
       <Box style={{display: 'flex', flexDirection: 'row-reverse'}}>
       {userData && <img alt='user-avatar' src={userData? userData.userAvatar : ''} style={{margin: '1vw', width: '3vw',}} />}
-      {userData && <p style={{margin: '2vw', width: '55%',}} >{userData? userData.userName : ''} </p>}
+      {userData && <p style={{margin: '2vw 0vw 2vw 2vw', width: '55%',}} >{userData? userData.userName : ''} </p>}
       </Box>
 
     </Box>
