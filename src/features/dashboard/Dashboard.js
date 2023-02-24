@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import Header from '../../Components/Header'
-import { Box, Button, Card, CardActionArea, CardContent, CardMedia, List, ListItem, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, List, ListItem, ListSubheader, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import {  useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -21,17 +21,23 @@ const Dashboard = () => {
 
     const cardStyle ={
       backgroundColor: 'transparent',
-      maxWidth: '18%', margin:'2%', border:'0.2vw solid #FCCF23'
+      maxWidth: '28%',
+      margin:'3%',
+      border:'0.2vw solid #FCCF23',
+      display: 'flex',
+      flexDirection: 'row',
+      maxHeight: '50%'
     }
 
     const buttonStyle = {
       backgroundColor: '#2E5B70',
       textDecoration: 'none',
       color: 'white',
-      padding: '0.7vw ',
-      marginBottom: '0.5vw',
-      fontSize: '0.9vw',
-      fontWeight: 500
+      padding: '0',
+      marginTop: '15%',
+      fontSize: '0.8vw',
+      fontWeight: 500,
+      maxHeight: '20%'
       }
 
 
@@ -49,24 +55,94 @@ const Dashboard = () => {
           component="img"
           image= {userData.userAvatar}
           alt="user avatar"
-          style={{marginBottom: '0%'}}
+          style={{marginBottom: '0%', width: '40%'}}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" color='white'>
+        <CardContent style={{display: 'flex', flexDirection: 'column' , justifyContent: 'center'}}>
+          <Typography gutterBottom variant="h5" component="div" color='white' style={{fontSize: '1.1vw'}}>
             {userData.userName}
           </Typography>
-          <Typography variant="body3" color='white' style={{fontSize: '90%' }} >
+          <Typography variant="body3" color='white' style={{fontSize: '81%' }} >
           House : {userData.userHouse} <br />
           Year : {userData.userYear} 
           </Typography>
         </CardContent>
         <Button style={buttonStyle} onClick={() => navigate('/character-creation')}>Edit</Button>
     </Card>
-    <Box className='dashboard-text'>
-    <p style={{color: '#FCCF23', marginRight: '3vw', marginTop: '2vw', width:'100%', fontSize: '3vw'}}>About {userData.userHouse}</p>
+
+
+    <Box className='dashboard-text' style={{margin:'4%', marginBottom: 0}} >
+    <p style={{color: '#FCCF23', width:'100%', fontSize: '3vw'}}>About {userData.userHouse}</p>
+
+    <List sx={{display: 'flex',}}>
+      <ListItem style={{minWidth: '24%', fontSize :'1.3vw' ,color: '#FCCF23'}}>Students traits : </ListItem>
+        {userData.houseTraits.map(elem => (
+            <ListItem>
+            {elem.name}
+            </ListItem>
+        ))}
+
+      </List>
     </Box>
-    <img src={userData.houseHeadPic} alt='test'></img>
+
+
+
+
+
     </Box>
+
+
+
+    <ImageList cols={4} sx={{ width: '90%', margin:'5% 8% 5% 5%', display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
+    <ImageListItem style={{width:'20%'}}>
+          <img
+            src={userData.houseAnimalPic}
+            alt={userData.houseAnimal}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title='House Animal : '
+            subtitle={userData.houseAnimal}
+          />
+        </ImageListItem>
+        <ImageListItem style={{width:'20%'}} >
+          <img
+            src={userData.houseGhostPic}
+            alt={userData.houseGhost}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title='House Ghost : '
+            subtitle={userData.houseGhost}
+          />
+        </ImageListItem >
+        <ImageListItem style={{width:'20%'}} >
+          <img
+            src={userData.houseFounderPic}
+            alt={userData.houseFounder}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title='House Founder : '
+            subtitle={userData.houseFounder}
+          />
+        </ImageListItem >
+    <ImageListItem style={{width:'20%'}} >
+          <img
+            src={userData.houseHeadPic}
+            alt={userData.houseHead}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title='House head : '
+            subtitle={userData.houseHead}
+          />
+        </ImageListItem>
+
+
+    </ImageList>
+
+
+
     </Box>
   )
 }

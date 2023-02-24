@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react'
 import Header from '../../Components/Header'
 import { Box, Button, ImageList, ImageListItem, List, ListItem, MenuItem, Select, TextField, Typography,  } from '@mui/material'
 import { Container } from '@mui/system';
-import { nanoid } from '@reduxjs/toolkit';
 import { adventurer } from '@dicebear/collection';
 import { createAvatar } from '@dicebear/core';
 import { Replay } from '@mui/icons-material';
@@ -10,15 +9,9 @@ import { useDispatch } from 'react-redux';
 import { createdUser } from './characterSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import houses from '../../utils/houses';
 
-const houses = [{id: nanoid() , 'house': 'Gryffindor', 
-'imageSource': 'https://i.pinimg.com/564x/05/fe/a7/05fea7e886d20a43dca6ba9b3bb335ce.jpg', houseHead : 'Albus Dumbledore'},
-{id: nanoid() , 'house': 'Slytherin', 
-'imageSource': 'https://i.pinimg.com/564x/34/ad/bf/34adbf92b50198013bc64775ed0a5616.jpg', houseHead : 'Severus Snape'},
-{id: nanoid() , 'house': 'Ravenclaw', 
-'imageSource': 'https://i.pinimg.com/564x/7c/81/8c/7c818c14c74964610a3601bda3eba946.jpg', houseHead : 'Severus Snape'},
-{id: nanoid() ,'house': 'Hufflepuff', 
-'imageSource': 'https://i.pinimg.com/564x/76/45/b9/7645b9b88e14bc3d8c12954bb130fd76.jpg', houseHead : 'Filius Flitwick', headPic : 'https://static.wikia.nocookie.net/harrypotter/images/4/4b/Flitwickarmourbattle.png'}]
+
 
 
 const CharacterCreation = () => {
@@ -56,7 +49,8 @@ const CharacterCreation = () => {
     const houseCall = (await axios.get('https://wizard-world-api.herokuapp.com/houses/' + houseId)).data
     console.log(houseCall)
 
-    const currentHouse = houses.find(house => house.id === isSelected)
+    const currentHouse = houses.find(house => house.id === isSelected)    
+
 
 
     const formattedInput = {
@@ -64,13 +58,15 @@ const CharacterCreation = () => {
      userYear : year,
      userAvatar : avatar,
      userHouse : currentHouse.house,
-     houseAnimal : houseCall.animal,
+     houseAnimal :  houseCall.animal,
+     houseAnimalPic :  currentHouse.houseAnimal,
      houseFounder : houseCall.founder,
-     houseElement : houseCall.element,
+     houseFounderPic : currentHouse.houseFounder,
      houseGhost : houseCall.ghost,
+     houseGhostPic : currentHouse.houseGhost,
      houseHead : currentHouse.houseHead,
-     houseHeadPic : currentHouse.headPic
-
+     houseHeadPic : currentHouse.headPic,
+     houseTraits: houseCall.traits,
     //  ...houseCall.data
     }
 
@@ -224,8 +220,8 @@ const CharacterCreation = () => {
 
                  <img
                  id={item.id}
-                 src={item.imageSource}
-                 srcSet={item.imageSource}
+                 src={item.houseLogo}
+                 srcSet={item.houseLogo}
                  alt={item.house}
                  loading="lazy"
                  style={{
