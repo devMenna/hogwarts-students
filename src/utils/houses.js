@@ -11,7 +11,7 @@ houseAnimal : 'https://static.wikia.nocookie.net/harrypotter/images/b/b1/Gryffin
 {id: nanoid() , house: 'Slytherin', 
 houseLogo: 'https://i.pinimg.com/564x/34/ad/bf/34adbf92b50198013bc64775ed0a5616.jpg',
 houseHead : 'Severus Snape' ,
-headPic : 'https://i.pinimg.com/564x/c1/cd/6e/c1cd6ef254e9622e952f777aee60ff07.jpg',
+headPic : 'https://i.pinimg.com/564x/59/b0/e4/59b0e417500006928956003aa1cc2b91.jpg',
 houseGhost: 'https://i.pinimg.com/originals/9a/fa/50/9afa506285f1e9f08d130f23e118527a.gif',
 houseFounder: 'https://1970789444.rsc.cdn77.org/assets/character/salazar-slytherin_20220623153011.png',
 houseAnimal : 'https://static.wikia.nocookie.net/harrypotter/images/0/00/Slytherin_ClearBG.png'},

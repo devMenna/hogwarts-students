@@ -1,23 +1,27 @@
 import { useSelector } from 'react-redux'
 import Header from '../../Components/Header'
-import { Box, Button, Card, CardActionArea, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, List, ListItem, ListSubheader, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, List, ListItem, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import {  useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { nanoid } from '@reduxjs/toolkit'
 
 const Dashboard = () => {
 
     const navigate = useNavigate()
 
     const userData = useSelector((state) => state.user.mainUser)
-    console.log(userData)
 
     useEffect(() => {
+      console.log(userData)
       if(!userData){
-        navigate('/')
+        navigate('/character-creation')
       }
 
     } , [userData, navigate])
+
+    if(!userData){
+      return
+    }
 
     const cardStyle ={
       backgroundColor: 'transparent',
@@ -66,7 +70,7 @@ const Dashboard = () => {
           Year : {userData.userYear} 
           </Typography>
         </CardContent>
-        <Button style={buttonStyle} onClick={() => navigate('/character-creation')}>Edit</Button>
+        <Button style={buttonStyle} onClick={() => navigate(-1)}>Edit</Button>
     </Card>
 
 
@@ -76,7 +80,7 @@ const Dashboard = () => {
     <List sx={{display: 'flex',}}>
       <ListItem style={{minWidth: '24%', fontSize :'1.3vw' ,color: '#FCCF23'}}>Students traits : </ListItem>
         {userData.houseTraits.map(elem => (
-            <ListItem>
+            <ListItem key={nanoid()}>
             {elem.name}
             </ListItem>
         ))}
