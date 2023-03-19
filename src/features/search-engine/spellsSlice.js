@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [];
 
-const potionsSlice = createSlice({
+const spellsSlice = createSlice({
   name: 'potions',
   initialState,
   reducers: {
-    potionsResult(state, action) {
+    spellsResult(state, action) {
       state.push(...action.payload);
     },
   },
 });
 
-export const { potionsResult } = potionsSlice.actions;
+export const { spellsResult } = spellsSlice.actions;
 
-export default potionsSlice.reducer;
+export default spellsSlice.reducer;

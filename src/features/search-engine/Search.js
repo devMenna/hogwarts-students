@@ -2,8 +2,9 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { potionsResult } from './potionsSlice';
+import { spellsResult } from './spellsSlice';
 
 const boxStyle = {
   backgroundColor: '#557789a6',
@@ -25,33 +26,35 @@ const buttonStyle = {
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState('');
 
   const dispatch = useDispatch();
+  const searchVal = window.location.href
+    .split('/')
+    .find((element) => element === 'potions' || element === 'spells');
+
+  const currentState = useSelector((state) => state[searchVal]);
+  console.log(currentState['potions']);
 
   useEffect(() => {
     (async function () {
-      setIsLoading(true);
+      const resultSet = (
+        await axios.get('https://api.potterdb.com/v1/' + searchVal)
+      )?.data?.data;
 
-      const resultSet = (await axios.get('https://api.potterdb.com/v1/potions'))
-        .data.data;
-      setData(resultSet);
-
-      console.log(resultSet);
-      dispatch(potionsResult(resultSet));
-
-      if (resultSet) {
-        setIsLoading(false);
+      if (searchVal === 'potions' && !currentState.length) {
+        dispatch(potionsResult(resultSet));
+      } else if (searchVal === 'spells' && !currentState.length) {
+        dispatch(spellsResult(resultSet));
       }
     })();
-  }, [dispatch]);
+  }, [dispatch, searchVal, currentState]);
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
-  const searchSubmit = async (e) => {};
+  const searchSubmit = (e) => {};
 
   return (
     <Box>
@@ -61,9 +64,9 @@ const Search = () => {
         <Box>
           <Typography className='get-started' variant='h6'>
             <p>
-              Here you can search and prep for your potions or spells class!
+              Here you can search and prep for your {searchVal} class!
               <br />
-              Type words and let US do the magic! "Pun intended"
+              put in the words and let US do the magic! "Pun intended"
             </p>
           </Typography>
 

@@ -33,7 +33,7 @@ const Header = () => {
           </ListItem>
           <ListItem>
             <Link
-              to={'/potions-and-spells'}
+              to={'/potions'}
               style={{ textDecoration: 'none', color: 'white' }}
             >
               <ListItemButton>
@@ -45,12 +45,17 @@ const Header = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <ListItemButton>
-              <ListItemIcon style={logoStyle}>
-                <AutoFixHigh style={{ width: '90%' }} />
-              </ListItemIcon>
-              <ListItemText primary='Spells' />
-            </ListItemButton>
+            <Link
+              to={'/spells'}
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              <ListItemButton>
+                <ListItemIcon style={logoStyle}>
+                  <AutoFixHigh style={{ width: '90%' }} />
+                </ListItemIcon>
+                <ListItemText primary='Spells' />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem>
             <ListItemButton>
