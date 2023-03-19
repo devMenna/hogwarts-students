@@ -1,48 +1,48 @@
 @import url('https://fonts.cdnfonts.com/css/medievalsharp');
 
-*{
+* {
   font-family: 'medievalsharp' !important;
 }
 
 body {
   margin: 0;
-  font-family: 'medievalsharp', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'medievalsharp', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image:
-  linear-gradient(270deg,
-    rgba(41, 43, 76, 0.289),
-    rgba(7, 38, 66, 0.529)), url(
-'./images/bckg.jpg');
+  background-image: linear-gradient(
+      270deg,
+      rgba(41, 43, 76, 0.289),
+      rgba(7, 38, 66, 0.529)
+    ),
+    url('./images/bckg.jpg');
   width: 100%;
   text-align: center;
   color: #fff;
-  
 }
 
 code {
-  font-family: 'medievalsharp',source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'medievalsharp', source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
 }
 
-.home{
+.home {
   width: 100% !important;
   padding: 7vw 0 7vw 0;
   margin-top: 7vw;
 }
 
-
-.span-container, .start {
+.span-container,
+.start {
   max-width: 40ch;
   transform: scale(0.94);
   animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
 }
 
-
-.span-title, .start {
+.span-title,
+.start {
   display: inline-block;
   opacity: 0;
   filter: blur(4px);
@@ -57,7 +57,8 @@ code {
   animation: fade-in 3s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
-.span-title:nth-child(3), .start {
+.span-title:nth-child(3),
+.start {
   animation: fade-in 3s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
@@ -72,27 +73,26 @@ code {
   }
 }
 
-
-.home-content{
+.home-content {
   display: flex;
   flex-direction: column;
 }
 
-.start{
+.start {
   font-size: 1.2vw !important;
   font-weight: 500 !important;
 }
 
-.btn{
-  background-color: #2F5C71 !important;
+.btn {
+  background-color: #2f5c71 !important;
 }
 
-.icon{
-  color: '#FCCF23'!important;
+.icon {
+  color: '#FCCF23' !important;
   font-size: 'medium' !important;
 }
 
-.appBar{
+.appBar {
   justify-content: space-between;
   display: flex;
   flex-direction: row;
@@ -108,7 +108,6 @@ code {
   left: 28%;
   margin-top: 4vw;
 }
-
 
 @keyframes appear {
   from {
@@ -149,27 +148,26 @@ code {
 body::-webkit-scrollbar {
   width: 0.5em;
 }
- 
+
 body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 4px #0E121B;
-  background-color: #0E121B;
+  box-shadow: inset 0 0 4px #0e121b;
+  background-color: #0e121b;
 }
- 
+
 body::-webkit-scrollbar-thumb {
   background-color: #557789a6;
 }
 
-
-.inner-content{
+.inner-content {
   display: flex !important;
   flex-direction: column !important;
 }
 
-.avatar{
+.avatar {
   margin-left: 6vw !important;
-  background-image: linear-gradient(to bottom , #0C1F31, #2D5B71)
+  background-image: linear-gradient(to bottom, #0c1f31, #2d5b71);
 }
 
-.selected-house{
+.selected-house {
   background-color: #557789a6;
 }
