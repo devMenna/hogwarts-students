@@ -1,16 +1,16 @@
 import {
   Box,
   Button,
-  Container,
   ImageList,
   ImageListItem,
   ImageListItemBar,
   TextField,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Footer from '../../Components/Footer';
 
 const boxStyle = {
   backgroundColor: '#557789a6',
@@ -31,24 +31,36 @@ const buttonStyle = {
 };
 
 const SearchResult = () => {
-  const [searchInput, setSearchInput] = useState('');
-  const [data, setData] = useState('');
-
   const searchVal = window.location.href
     .split('/')
     .find((element) => element === 'potions' || element === 'spells');
 
   const searchResult = useSelector((state) => state[searchVal]);
 
+  const sec = searchResult.find((elem) =>
+    elem.attributes.name.toLowerCase().includes('s')
+  );
+  console.log(sec);
+
+  useEffect(() => {
+    setData(searchResult);
+  }, [searchResult]);
+
+  const [data, setData] = useState([...searchResult]);
+
   const handleInputChange = (e) => {
-    setSearchInput(e.target.value);
+    setData(
+      searchResult.filter((elem) =>
+        elem.attributes.name.toLowerCase().includes(e.target.value)
+      )
+    );
   };
 
   const searchSubmit = (e) => {};
 
   return (
     <Box>
-      <form>
+      <form onSubmit={searchSubmit}>
         <Box>
           <Typography className='get-started' variant='h6'>
             <p>
@@ -66,6 +78,7 @@ const SearchResult = () => {
             }}
           >
             <TextField
+              onChange={handleInputChange}
               sx={boxStyle}
               style={{ marginTop: '12%', width: '15%' }}
               placeholder='Enter potion or spell name'
@@ -77,15 +90,15 @@ const SearchResult = () => {
           </Box>
         </Box>
       </form>
-      {searchResult && (
+      {data && (
         <ImageList
-          cols={3}
+          cols={4}
           style={{
             margin: '1% 5% 5% 5%',
           }}
           gap={10}
         >
-          {searchResult.slice(0, 21).map((item) => (
+          {data.slice(0, 20).map((item) => (
             <Link
               to={`${searchVal}-details/${item.id}`}
               key={item.id}
@@ -108,7 +121,7 @@ const SearchResult = () => {
                   srcSet={item.attributes?.image}
                   alt={item.name}
                   loading='lazy'
-                  style={{ width: '20vw', height: '20vw' }}
+                  style={{ width: '15vw', height: '15vw' }}
                 />
                 <ImageListItemBar
                   title={item.name}
@@ -125,6 +138,8 @@ const SearchResult = () => {
           ))}
         </ImageList>
       )}
+
+      <Footer />
     </Box>
   );
 };
