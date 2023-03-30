@@ -16,7 +16,6 @@ import {
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from '@reduxjs/toolkit';
-import Footer from '../../Components/Footer';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -179,7 +178,6 @@ const Dashboard = () => {
           />
         </ImageListItem>
       </ImageList>
-      <Footer />
     </Box>
   );
 };

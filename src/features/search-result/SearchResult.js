@@ -10,7 +10,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Footer from '../../Components/Footer';
 
 const boxStyle = {
   backgroundColor: '#557789a6',
@@ -100,7 +99,7 @@ const SearchResult = () => {
         >
           {data.slice(0, 20).map((item) => (
             <Link
-              to={`${searchVal}-details/${item.id}`}
+              to={item.id}
               key={item.id}
               style={{ textDecoration: 'none', color: 'white' }}
             >
@@ -138,8 +137,6 @@ const SearchResult = () => {
           ))}
         </ImageList>
       )}
-
-      <Footer />
     </Box>
   );
 };

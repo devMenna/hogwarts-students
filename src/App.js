@@ -3,6 +3,8 @@ import Homepage from './features/homePage/Homepage';
 import CharacterCreation from './features/character-creation/CharacterCreation';
 import Dashboard from './features/dashboard/Dashboard';
 import Search from './features/search-engine/Search';
+import ResultCard from './features/search-result/ResultCard';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -13,7 +15,10 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/potions' element={<Search />} />
         <Route path='/spells' element={<Search />} />
+        <Route path='potions/:id' element={<ResultCard />} />
+        <Route path='spells/:id' element={<ResultCard />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

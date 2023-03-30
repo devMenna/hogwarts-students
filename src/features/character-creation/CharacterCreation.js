@@ -21,7 +21,6 @@ import { createdUser } from './characterSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import houses from '../../utils/houses';
-import Footer from '../../Components/Footer';
 
 const CharacterCreation = () => {
   const [name, setName] = useState('');
@@ -280,8 +279,6 @@ const CharacterCreation = () => {
           Submit
         </Button>
       )}
-
-      <Footer />
     </Box>
   );
 };
