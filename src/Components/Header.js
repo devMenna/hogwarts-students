@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { AutoFixHigh, Face, Home, Science } from '@mui/icons-material';
+import { AutoFixHigh, Favorite, Home, Science } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -24,12 +24,17 @@ const Header = () => {
       <Box>
         <List style={{ display: 'flex', flexDirection: 'row', width: '40%' }}>
           <ListItem>
-            <ListItemButton>
-              <ListItemIcon style={logoStyle}>
-                <Home style={{ width: '90%' }} />
-              </ListItemIcon>
-              <ListItemText primary='Home' />
-            </ListItemButton>
+            <Link
+              to={'/dashboard'}
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              <ListItemButton>
+                <ListItemIcon style={logoStyle}>
+                  <Home style={{ width: '90%' }} />
+                </ListItemIcon>
+                <ListItemText primary='Home' />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem>
             <Link
@@ -58,12 +63,17 @@ const Header = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <ListItemButton>
-              <ListItemIcon style={{ color: '#FCCF23', fontSize: 'medium' }}>
-                <Face style={{ width: '90%' }} />
-              </ListItemIcon>
-              <ListItemText primary='Dashboard' />
-            </ListItemButton>
+            <Link
+              to={'/favorites'}
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              <ListItemButton>
+                <ListItemIcon style={{ color: '#FCCF23', fontSize: 'medium' }}>
+                  <Favorite style={{ width: '90%' }} />
+                </ListItemIcon>
+                <ListItemText primary='Favorites' />
+              </ListItemButton>
+            </Link>
           </ListItem>
         </List>
       </Box>

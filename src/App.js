@@ -5,6 +5,7 @@ import Dashboard from './features/dashboard/Dashboard';
 import Search from './features/search-engine/Search';
 import ResultCard from './features/search-result/ResultCard';
 import Footer from './Components/Footer';
+import Favorites from './features/favorites/Favorites';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/spells' element={<Search />} />
         <Route path='potions/:id' element={<ResultCard />} />
         <Route path='spells/:id' element={<ResultCard />} />
+        <Route path='favorites' element={<Favorites />} />
       </Routes>
       <Footer />
     </div>
