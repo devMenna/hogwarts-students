@@ -1,14 +1,16 @@
 import { Box, Button, Chip, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../Components/Header';
 import { Favorite } from '@mui/icons-material';
+import { favoritesResult } from '../favorites/favoritesSlice';
 
 const ResultCard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const searchVal = window.location.href
     .split('/')
@@ -17,6 +19,11 @@ const ResultCard = () => {
   const searchCategory = useSelector((state) => state[searchVal]);
 
   const selectedItem = searchCategory.find((elem) => elem.id === id);
+  console.log(selectedItem);
+
+  const handleClick = (e) => {
+    dispatch(favoritesResult(selectedItem));
+  };
 
   const buttonStyle = {
     backgroundColor: '#2E5B70',
@@ -188,7 +195,7 @@ const ResultCard = () => {
           >
             Back
           </Button>
-          <Button variant='contained' sx={buttonStyle}>
+          <Button variant='contained' sx={buttonStyle} onClick={handleClick}>
             <Favorite />
           </Button>
         </Container>
