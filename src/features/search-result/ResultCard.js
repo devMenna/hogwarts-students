@@ -17,12 +17,15 @@ const ResultCard = () => {
     .find((element) => element === 'potions' || element === 'spells');
 
   const searchCategory = useSelector((state) => state[searchVal]);
+  const favoriteList = useSelector((state) => state.favorites);
 
   const selectedItem = searchCategory.find((elem) => elem.id === id);
-  console.log(selectedItem);
 
   const handleClick = (e) => {
-    dispatch(favoritesResult(selectedItem));
+    e.preventDefault();
+    if (!favoriteList.includes(selectedItem)) {
+      dispatch(favoritesResult(selectedItem));
+    }
   };
 
   const buttonStyle = {
