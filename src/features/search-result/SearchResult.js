@@ -104,6 +104,7 @@ const SearchResult = () => {
               style={{ textDecoration: 'none', color: 'white' }}
             >
               <ImageListItem
+                className='card-hover'
                 style={{
                   display: 'flex',
                   alignItems: 'center',

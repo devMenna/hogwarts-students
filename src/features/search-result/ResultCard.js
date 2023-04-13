@@ -1,13 +1,16 @@
 import { Box, Button, Chip, Typography } from '@mui/material';
 import { Container } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../Components/Header';
 import { Favorite } from '@mui/icons-material';
 import { favoritesResult } from '../favorites/favoritesSlice';
+import { noteFavorite } from '../favorites/noteSlice';
 
 const ResultCard = () => {
+  const [color, setColor] = useState('white');
+
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,7 +28,15 @@ const ResultCard = () => {
     e.preventDefault();
     if (!favoriteList.includes(selectedItem)) {
       dispatch(favoritesResult(selectedItem));
+      dispatch(
+        noteFavorite({
+          favoriteItemId: selectedItem.id,
+          note: '',
+        })
+      );
+      setColor('red');
     }
+    setColor('red');
   };
 
   const buttonStyle = {
@@ -187,6 +198,7 @@ const ResultCard = () => {
             sx={buttonStyle}
             href={selectedItem.attributes.wiki}
             target='_blank'
+            className='wiki'
           >
             Check out the Wiki
           </Button>
@@ -199,7 +211,7 @@ const ResultCard = () => {
             Back
           </Button>
           <Button variant='contained' sx={buttonStyle} onClick={handleClick}>
-            <Favorite />
+            <Favorite style={{ color: color }} />
           </Button>
         </Container>
       </Container>
