@@ -9,9 +9,12 @@ const noteSlice = createSlice({
     noteFavorite(state, action) {
       state.push(action.payload);
     },
+    resetNote(state) {
+      return initialState;
+    },
   },
 });
 
-export const { noteFavorite } = noteSlice.actions;
+export const { noteFavorite, resetNote } = noteSlice.actions;
 
 export default noteSlice.reducer;

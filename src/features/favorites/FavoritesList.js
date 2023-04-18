@@ -9,10 +9,15 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { noteFavorite, resetNote } from './noteSlice';
 
 const FavoritesList = ({ favItem }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [note, setNote] = useState('');
+
+  const allNotes = useSelector((state) => state.notes);
+  const dispatch = useDispatch();
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -22,8 +27,19 @@ const FavoritesList = ({ favItem }) => {
     setNote(e.target.value);
   };
 
-  const handleDoneEditing = () => {
+  const handleDoneEditing = (id) => {
     setIsEditing(false);
+
+    const newNote = {
+      ...allNotes.find((note) => note.favoriteItemId === id),
+      note: note,
+    };
+
+    const updatedNotes = allNotes.filter((note) => note.favoriteItemId !== id);
+    updatedNotes.push(newNote);
+
+    dispatch(resetNote());
+    updatedNotes.forEach((note) => dispatch(noteFavorite(note))); // Dispatch the updated notes
   };
 
   const chipStyle = {
@@ -168,7 +184,12 @@ const FavoritesList = ({ favItem }) => {
               style={boxStyle}
             />
 
-            <Button onClick={handleDoneEditing} style={{ ...buttonStyle }}>
+            <Button
+              onClick={() => {
+                handleDoneEditing(favItem.id);
+              }}
+              style={{ ...buttonStyle }}
+            >
               <Check />
             </Button>
           </Box>
