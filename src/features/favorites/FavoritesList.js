@@ -113,7 +113,6 @@ const FavoritesList = ({ favItem }) => {
         />
 
         <Container>
-          {/* {setNote(favItem.note)} */}
           <Container
             style={{
               display: 'flex',
@@ -180,6 +179,7 @@ const FavoritesList = ({ favItem }) => {
           <Box style={{ display: 'flex' }}>
             <TextField
               className='input-field'
+              value={note}
               onChange={handleNoteChange}
               style={boxStyle}
             />

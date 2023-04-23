@@ -180,3 +180,31 @@ button:hover,
 input {
   color: white !important;
 }
+
+@media (max-width: 768px) {
+  .avatar-box {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .avatar-box > div {
+    margin-bottom: 5% !important;
+  }
+
+  .avatar {
+    width: 50% !important;
+    margin-left: 0 !important;
+    margin-bottom: 5% !important;
+  }
+
+  .MuiList-root {
+    width: 100% !important;
+  }
+  label,
+  button {
+    font-size: 0.7rem !important;
+  }
+  p {
+    display: none !important;
+  }
+}
