@@ -16,14 +16,14 @@ import { Container } from '@mui/system';
 import { adventurer } from '@dicebear/collection';
 import { createAvatar } from '@dicebear/core';
 import { Replay } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createdUser } from './characterSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import houses from '../../utils/houses';
 
 const CharacterCreation = () => {
-  // const userData = useSelector((state) => state.user.userData);
+  const userData = useSelector((state) => state.user.userData);
 
   const [name, setName] = useState('');
   const [year, setYear] = useState('');
@@ -40,13 +40,6 @@ const CharacterCreation = () => {
       seed: random,
       features: ['birthmark', 'blush', 'freckles'],
       featuresProbability: 100,
-      glasses: [
-        'variant01',
-        'variant02',
-        'variant03',
-        'variant04',
-        'variant05',
-      ],
       glassesProbability: 40,
       skinColor: ['ecad80', 'f2d3b1'],
     }).toDataUriSync();

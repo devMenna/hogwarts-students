@@ -2,7 +2,6 @@ import { Check } from '@mui/icons-material';
 import {
   Box,
   Button,
-  Chip,
   Container,
   ImageListItem,
   TextField,
@@ -40,15 +39,6 @@ const FavoritesList = ({ favItem }) => {
 
     dispatch(resetNote());
     updatedNotes.forEach((note) => dispatch(noteFavorite(note))); // Dispatch the updated notes
-  };
-
-  const chipStyle = {
-    color: 'white',
-    background: '#2E5B70',
-    marginRight: 1,
-    marginTop: 3,
-    fontWeight: 10,
-    fontSize: '0.9vw',
   };
 
   const textStyle = {
@@ -120,15 +110,8 @@ const FavoritesList = ({ favItem }) => {
               alignItems: 'center',
             }}
           >
-            <Box sx={{ marginBottom: 2, display: 'flex' }}>
-              <Chip
-                label={'Effect: ' + favItem.attributes.effect}
-                sx={chipStyle}
-              />
-              <Chip label={'Type : ' + favItem.type} sx={chipStyle} />
-            </Box>
-
             <Typography gutterBottom variant='h5' component='div'>
+              {favItem.type + ': '}
               {favItem.attributes.name}
             </Typography>
 
@@ -158,6 +141,10 @@ const FavoritesList = ({ favItem }) => {
                 <Typography variant='body2' style={textStyle}>
                   <span style={{ color: '#FCCF23' }}>Characteristics: </span>{' '}
                   {favItem.attributes.characteristics}
+                </Typography>
+                <Typography variant='body2' style={textStyle}>
+                  <span style={{ color: '#FCCF23' }}>Effect: </span>{' '}
+                  {favItem.attributes.effect}
                 </Typography>
               </Box>
             )}
