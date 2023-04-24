@@ -97,7 +97,10 @@ const Dashboard = () => {
               Year : {userData.userYear}
             </Typography>
           </CardContent>
-          <Button style={buttonStyle} onClick={() => navigate(-1)}>
+          <Button
+            style={buttonStyle}
+            onClick={() => navigate('/character-creation')}
+          >
             Edit
           </Button>
         </Card>

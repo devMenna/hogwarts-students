@@ -23,6 +23,8 @@ import axios from 'axios';
 import houses from '../../utils/houses';
 
 const CharacterCreation = () => {
+  // const userData = useSelector((state) => state.user.userData);
+
   const [name, setName] = useState('');
   const [year, setYear] = useState('');
   const [isSelected, setIsSelected] = useState(null);
@@ -45,7 +47,7 @@ const CharacterCreation = () => {
         'variant04',
         'variant05',
       ],
-      glassesProbability: 50,
+      glassesProbability: 40,
       skinColor: ['ecad80', 'f2d3b1'],
     }).toDataUriSync();
   }, [random]);
@@ -83,7 +85,6 @@ const CharacterCreation = () => {
       houseHead: currentHouse.houseHead,
       houseHeadPic: currentHouse.headPic,
       houseTraits: houseCall.traits,
-      //  ...houseCall.data
     };
 
     dispatch(createdUser(formattedInput));
@@ -270,15 +271,14 @@ const CharacterCreation = () => {
           </ListItem>
         </List>
       </Container>
-      {name && year && isSelected && (
-        <Button
-          onClick={submitHandle}
-          className='submit'
-          style={{ ...buttonStyle, marginTop: '2vw', marginBottom: '3vw' }}
-        >
-          Submit
-        </Button>
-      )}
+      <Button
+        onClick={submitHandle}
+        className='submit'
+        style={{ ...buttonStyle, marginTop: '2vw', marginBottom: '3vw' }}
+        disabled={!name || !year || !isSelected}
+      >
+        Submit
+      </Button>
     </Box>
   );
 };
