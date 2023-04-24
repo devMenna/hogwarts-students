@@ -25,8 +25,8 @@ import houses from '../../utils/houses';
 const CharacterCreation = () => {
   const userData = useSelector((state) => state.user.userData);
 
-  const [name, setName] = useState('');
-  const [year, setYear] = useState('');
+  const [name, setName] = useState(userData ? userData.userName : '');
+  const [year, setYear] = useState(userData ? userData.userYear : '');
   const [isSelected, setIsSelected] = useState(null);
   const [random, setRandom] = useState(0);
 
